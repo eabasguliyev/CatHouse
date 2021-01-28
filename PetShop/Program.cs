@@ -49,9 +49,17 @@ namespace PetShop
             {
                 foreach (var cat in itemHouse.Cats)
                 {
-                    for (int i = 0; i < 25; i++)
+                    for (int i = 0; i < 15; i++)
                     {
                         cat.Play();
+                        cat.Show();
+                        Thread.Sleep(300);
+                        Console.Clear();
+                    }
+
+                    for (int i = 0; i < 15; i++)
+                    {
+                        cat.Caress();
                         cat.Show();
                         Thread.Sleep(300);
                         Console.Clear();

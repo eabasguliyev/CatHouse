@@ -12,7 +12,7 @@ namespace PetShop
         public int Energy { get; private set; } = 100;
         public double Price { get; set; }
         public int MealQuantity { get; set; }
-
+        public int NumberOfMealEaten { get; private set; } = default;
         public static int CatId { get; private set; }
 
         public Cat()
@@ -26,6 +26,7 @@ namespace PetShop
             {
                 Energy += 30;
                 MealQuantity -= 3;
+                NumberOfMealEaten += 3;
                 Price += 0.5;
                 if (Energy > 100)
                     Energy = 100;
@@ -42,10 +43,13 @@ namespace PetShop
 
         public void Play()
         {
-            if (Energy > 0)
-                Energy -= 5;
-            else
+            Energy -= 5;
+
+            if (Energy <= 0)
+            {
+                Energy = 0;
                 Sleep();
+            }
         }
 
         public void Show()
@@ -62,6 +66,17 @@ namespace PetShop
             Console.WriteLine($"Price: {Price:C2}");
             Console.WriteLine($"Meal quantity: {MealQuantity}");
             Console.ResetColor();
+        }
+
+        public void Caress()
+        {
+            Energy -= 2;
+
+            if (Energy <= 0)
+            {
+                Energy = 0;
+                Sleep();
+            }
         }
     }
 }

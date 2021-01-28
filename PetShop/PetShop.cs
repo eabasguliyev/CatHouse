@@ -48,6 +48,7 @@ namespace PetShop
             Console.WriteLine($"Name: {Name}");
             Console.WriteLine($"Cat House count: {CatHouses?.Length}");
             Console.WriteLine($"Total meal quantity: {GetTotalMealQuantity()}");
+            Console.WriteLine($"Total eaten mealquantity: {GetTotalMealEaten()}");
             Console.WriteLine($"Total cat price: {GetTotalCatPrice():C2}");
             Console.ResetColor();
         }
@@ -66,6 +67,19 @@ namespace PetShop
             return total;
         }
 
+        public int GetTotalMealEaten()
+        {
+            var total = 0;
+            if (CatHouses != null)
+            {
+                foreach (var catHouse in CatHouses)
+                {
+                    total += catHouse.GetTotalMealEaten();
+                }
+            }
+
+            return total;
+        }
         public double GetTotalCatPrice()
         {
             var total = 0.0;
